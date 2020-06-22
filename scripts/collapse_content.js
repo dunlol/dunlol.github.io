@@ -4,10 +4,13 @@ var blanket=document.getElementById("blanket");
 var i;
 
 const blanket_opacity="0.7"
-const card_color_before_click="white"
-const card_color_after_click="black"
-const text_color_before_click="black"
-const text_color_after_click="white"
+const card_color_before_click="rgba(0,0,0,0.7)"
+const card_color_after_click="red"
+const text_color_before_click="white"
+const text_color_after_click="black"
+const medium="#FFD966"
+const easy="#93C47D"
+const hard="#E06666"
 
 var curr=null
 for (i = 0; i < coll.length; i++) {
@@ -16,7 +19,15 @@ for (i = 0; i < coll.length; i++) {
         heading=this.getElementsByTagName("h3")[0]
         this.style.backgroundColor=card_color_after_click
         heading.style.color=text_color_after_click
-
+        if (this.getAttribute("data-difficulty")==="medium"){
+            this.style.backgroundColor=medium
+        }
+        else if (this.getAttribute("data-difficulty")==="easy"){
+            this.style.backgroundColor=easy
+        }
+        else if (this.getAttribute("data-difficulty")=="hard"){
+            this.style.backgroundColor=hard
+        }
     })
   
     
@@ -62,7 +73,17 @@ for (i = 0; i < coll.length; i++) {
       curr.parentElement.style.borderBottomLeftRadius="0%"   //bottom left and right borders
       curr.parentElement.style.borderBottomRightRadius="0%"
 
+
       curr.parentElement.style.backgroundColor=card_color_after_click   //color
+      if (curr.parentElement.getAttribute("data-difficulty")=="medium"){
+            curr.parentElement.style.backgroundColor=medium
+      }
+      else if (curr.parentElement.getAttribute("data-difficulty")=="easy"){
+          curr.parentElement.style.backgroundColor=easy
+      }
+      else if (curr.parentElement.getAttribute("data-difficulty")=="hard"){
+        curr.parentElement.style.backgroundColor=hard
+    }
 
       this.getElementsByTagName("h3")[0].style.color=text_color_after_click
       
